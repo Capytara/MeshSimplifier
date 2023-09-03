@@ -21,3 +21,6 @@ int target_faces_count{1000};         // 简化后的模型面数
 xmake
 xmake run
 ```
+## 参考
+https://github.com/LiMingci/MeshSimplifier
+http://vcglib.net/platonic_8h_source.html
