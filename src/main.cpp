@@ -30,7 +30,7 @@ void QemSimplify(Eigen::MatrixXd &verts, Eigen::MatrixXi &faces,
         ++fi;
     }
 
-    MeshSimplifier::Settings conf;
+    Settings conf;
     conf.targetFaceNum = target_faces_count;
 
     MeshSimplifier mesh_sim;
@@ -40,7 +40,7 @@ void QemSimplify(Eigen::MatrixXd &verts, Eigen::MatrixXi &faces,
     verts.resize(mesh.VN(), 3);
     faces.resize(mesh.FN(), 3);
 
-    int v_idx = 0;
+    int v_idx{};
     for (auto & vii : mesh.vert) {
         if (!vii.IsD()) {
             verts.row(v_idx) = Eigen::Vector3d{vii.P()[0], vii.P()[1], vii.P()[2]};
@@ -48,7 +48,7 @@ void QemSimplify(Eigen::MatrixXd &verts, Eigen::MatrixXi &faces,
         }
     }
 
-    int vert_idx = 0;
+    int vert_idx{};
     std::vector<int> VertexId(mesh.vert.size());
     for (auto vii = mesh.vert.begin(); vii != mesh.vert.end(); ++vii) {
         if (!(*vii).IsD()) {
@@ -74,7 +74,7 @@ int main() {
 
     std::string input_model_path{R"()"};
     std::string output_model_path{R"()"};
-    int target_faces_count{1000}; // 简化后的面数
+    int target_faces_count{1000}; // 简化后的模型面数
 
     igl::readOBJ(input_model_path, verts, faces);
     QemSimplify(verts, faces, target_faces_count);

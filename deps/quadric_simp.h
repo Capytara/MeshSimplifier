@@ -51,7 +51,7 @@ namespace vcg {
 
             inline MyTriEdgeCollapse(const VertexPair &p, int i, BaseParameterClass *pp) : TECQ(p, i, pp) {}
         };
-    } // end namespace tri
-} // end namepsace vcg
+    }
+}
 void QuadricSimplification(CMeshO &m, int TargetFaceNum, bool Selected, vcg::tri::TriEdgeCollapseQuadricParameter &pp);
 
